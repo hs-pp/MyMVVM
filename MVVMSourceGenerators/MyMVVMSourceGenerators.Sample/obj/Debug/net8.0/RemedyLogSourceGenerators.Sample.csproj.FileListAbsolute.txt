@@ -1,0 +1,14 @@
+/Users/hyungjinshin/Documents/RiderProjects/Remedy/RemedyLogSourceGenerators/RemedyLogSourceGenerators.Sample/obj/Debug/net8.0/RemedyLogSourceGenerators.Sample.GeneratedMSBuildEditorConfig.editorconfig
+/Users/hyungjinshin/Documents/RiderProjects/Remedy/RemedyLogSourceGenerators/RemedyLogSourceGenerators.Sample/obj/Debug/net8.0/RemedyLogSourceGenerators.Sample.AssemblyInfoInputs.cache
+/Users/hyungjinshin/Documents/RiderProjects/Remedy/RemedyLogSourceGenerators/RemedyLogSourceGenerators.Sample/obj/Debug/net8.0/RemedyLogSourceGenerators.Sample.AssemblyInfo.cs
+/Users/hyungjinshin/Documents/RiderProjects/Remedy/RemedyLogSourceGenerators/RemedyLogSourceGenerators.Sample/obj/Debug/net8.0/RemedyLogSourceGenerators.Sample.csproj.CoreCompileInputs.cache
+/Users/hyungjinshin/Documents/RiderProjects/Remedy/RemedyLogSourceGenerators/RemedyLogSourceGenerators.Sample/bin/Debug/net8.0/RemedyLogSourceGenerators.Sample.deps.json
+/Users/hyungjinshin/Documents/RiderProjects/Remedy/RemedyLogSourceGenerators/RemedyLogSourceGenerators.Sample/bin/Debug/net8.0/RemedyLogSourceGenerators.Sample.dll
+/Users/hyungjinshin/Documents/RiderProjects/Remedy/RemedyLogSourceGenerators/RemedyLogSourceGenerators.Sample/bin/Debug/net8.0/RemedyLogSourceGenerators.Sample.pdb
+/Users/hyungjinshin/Documents/RiderProjects/Remedy/RemedyLogSourceGenerators/RemedyLogSourceGenerators.Sample/bin/Debug/net8.0/UnityEngine.dll
+/Users/hyungjinshin/Documents/RiderProjects/Remedy/RemedyLogSourceGenerators/RemedyLogSourceGenerators.Sample/obj/Debug/net8.0/RemedyLogSourceGenerators.Sample.csproj.AssemblyReference.cache
+/Users/hyungjinshin/Documents/RiderProjects/Remedy/RemedyLogSourceGenerators/RemedyLogSourceGenerators.Sample/obj/Debug/net8.0/RemedyLo.D62BB1F0.Up2Date
+/Users/hyungjinshin/Documents/RiderProjects/Remedy/RemedyLogSourceGenerators/RemedyLogSourceGenerators.Sample/obj/Debug/net8.0/RemedyLogSourceGenerators.Sample.dll
+/Users/hyungjinshin/Documents/RiderProjects/Remedy/RemedyLogSourceGenerators/RemedyLogSourceGenerators.Sample/obj/Debug/net8.0/refint/RemedyLogSourceGenerators.Sample.dll
+/Users/hyungjinshin/Documents/RiderProjects/Remedy/RemedyLogSourceGenerators/RemedyLogSourceGenerators.Sample/obj/Debug/net8.0/RemedyLogSourceGenerators.Sample.pdb
+/Users/hyungjinshin/Documents/RiderProjects/Remedy/RemedyLogSourceGenerators/RemedyLogSourceGenerators.Sample/obj/Debug/net8.0/ref/RemedyLogSourceGenerators.Sample.dll

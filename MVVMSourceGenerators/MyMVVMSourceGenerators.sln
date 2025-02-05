@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMVVMSourceGenerators", "MyMVVMSourceGenerators\MyMVVMSourceGenerators.csproj", "{40129580-F805-4344-9AB2-E535D8EA93A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMVVMSourceGenerators.Sample", "MyMVVMSourceGenerators.Sample\MyMVVMSourceGenerators.Sample.csproj", "{05E89A0B-C755-404A-BB9C-C9290C919A81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40129580-F805-4344-9AB2-E535D8EA93A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40129580-F805-4344-9AB2-E535D8EA93A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40129580-F805-4344-9AB2-E535D8EA93A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40129580-F805-4344-9AB2-E535D8EA93A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05E89A0B-C755-404A-BB9C-C9290C919A81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05E89A0B-C755-404A-BB9C-C9290C919A81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05E89A0B-C755-404A-BB9C-C9290C919A81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05E89A0B-C755-404A-BB9C-C9290C919A81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
