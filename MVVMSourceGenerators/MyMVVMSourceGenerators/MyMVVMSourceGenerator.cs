@@ -444,7 +444,7 @@ namespace {modelGenConfig.Namespace}
     private string GeneratePassthrough(PassthroughAttributeConfig passthrough)
     {
         return $@"
-    // === Generated for {passthrough.FieldName} ===
+    // === Generated Passthrough for {passthrough.FieldName} ===
     public {passthrough.FieldType} {passthrough.PropName} => {passthrough.ModelName}.{passthrough.ModelPropertyName};
     public Action<{passthrough.FieldType}> {passthrough.PropName}_OnChanged
     {{
@@ -468,7 +468,7 @@ namespace {modelGenConfig.Namespace}
     private string GeneratePassthroughList(PassthroughAttributeConfig passthrough)
     {
         return $@"
-    // === Generated for {passthrough.FieldName} ===
+    // === Generated Passthrough for {passthrough.FieldName} ===
     public ReadOnlyCollection<{passthrough.ListType}> {passthrough.PropName} => {passthrough.ModelName}.{passthrough.ModelPropertyName};
     public Action {passthrough.PropName}_OnChanged
     {{
@@ -563,6 +563,15 @@ namespace {modelGenConfig.Namespace}
     {{
         {observable.FieldName}.OnChanged += OnChanged;
     }}");
+                }
+            }
+            else if (attributeConfig is PassthroughAttributeConfig passthrough)
+            {
+                if (passthrough.IsList)
+                {
+                }
+                else
+                {
                 }
             }
         }
