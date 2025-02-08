@@ -18,3 +18,4 @@
 /Users/hyungjinshin/Repos/MyMVVM/MVVMSourceGenerators/MyMVVMSourceGenerators/obj/Debug/netstandard2.0/MyMVVMSourceGenerators.csproj.CoreCompileInputs.cache
 /Users/hyungjinshin/Repos/MyMVVM/MVVMSourceGenerators/MyMVVMSourceGenerators/obj/Debug/netstandard2.0/MyMVVMSourceGenerators.dll
 /Users/hyungjinshin/Repos/MyMVVM/MVVMSourceGenerators/MyMVVMSourceGenerators/obj/Debug/netstandard2.0/MyMVVMSourceGenerators.pdb
+/Users/hyungjinshin/Repos/MyMVVM/MVVMSourceGenerators/MyMVVMSourceGenerators/obj/Debug/netstandard2.0/MyMVVMSourceGenerators.sourcelink.json

@@ -465,45 +465,6 @@ namespace {modelGenConfig.Namespace}
 ";
     }
 
-    private string GenerateModelInit(ModelGenConfig modelGenConfig)
-    {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.Append($@"
-    protected override void AutoGenInit()
-    {{");
-        
-        foreach (AttributeConfig attributeConfig in modelGenConfig.RelevantAttributes)
-        {
-            if (attributeConfig is ObservableAttributeConfig observable && observable.FieldIsTypeModel)
-            {
-                if (observable.IsList)
-                {
-                    stringBuilder.Append($@"
-    if ({observable.FieldName} != null)
-    {{
-        foreach({observable.ListType} element in {observable.FieldName})
-        {{
-            {observable.PropName}_BindElementOnChanged(element);
-        }}
-    }}");
-                }
-                else
-                {
-                    stringBuilder.Append($@"
-    if ({observable.FieldName} != null)
-    {{
-        {observable.FieldName}.OnChanged += OnChanged;
-    }}");
-                }
-            }
-        }
-        
-        stringBuilder.Append($@"
-}}");   
-        
-        return stringBuilder.ToString();
-    }
-
     private string GeneratePassthroughList(PassthroughAttributeConfig passthrough)
     {
         return $@"
@@ -571,5 +532,44 @@ namespace {modelGenConfig.Namespace}
     }}
     // =================
 ";
+    }
+    
+    private string GenerateModelInit(ModelGenConfig modelGenConfig)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.Append($@"
+    protected override void AutoGenInit()
+    {{");
+        
+        foreach (AttributeConfig attributeConfig in modelGenConfig.RelevantAttributes)
+        {
+            if (attributeConfig is ObservableAttributeConfig observable && observable.FieldIsTypeModel)
+            {
+                if (observable.IsList)
+                {
+                    stringBuilder.Append($@"
+    if ({observable.FieldName} != null)
+    {{
+        foreach({observable.ListType} element in {observable.FieldName})
+        {{
+            {observable.PropName}_BindElementOnChanged(element);
+        }}
+    }}");
+                }
+                else
+                {
+                    stringBuilder.Append($@"
+    if ({observable.FieldName} != null)
+    {{
+        {observable.FieldName}.OnChanged += OnChanged;
+    }}");
+                }
+            }
+        }
+        
+        stringBuilder.Append($@"
+}}");   
+        
+        return stringBuilder.ToString();
     }
 }
