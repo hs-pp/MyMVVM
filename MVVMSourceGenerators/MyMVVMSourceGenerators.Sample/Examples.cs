@@ -1,24 +1,25 @@
 using System;
 using System.Collections.Generic;
+using MyMVVM;
 
 [Serializable]
-public class BaseDataModel
+public class BaseModel
 {
-    public BaseDataModel()
+    public BaseModel()
     {
         AutoGenInit();
     }
-    public Action<BaseDataModel> OnChanged;
-
+    
+    public virtual event Action<BaseModel> OnChanged;
     protected virtual void AutoGenInit() { }
 }
 
-public class Model : BaseDataModel
+public class Model : BaseModel
 {
     
 }
 
-public class ViewModel : BaseDataModel
+public class ViewModel : BaseModel
 {
     
 }
@@ -36,37 +37,34 @@ public class PassthroughAttribute : Attribute
 public partial class TestModel : Model
 {
     [Observable]
-    private string m_hello;
+    private string m_testString;
 
     [Observable]
-    private List<int> stringsss;
+    private List<int> m_testStringList;
 
     [Observable]
     private AnotherModel m_anotherModel;
 
     [Observable]
     private List<AnotherModel> m_manyOtherModels;
-    
-    [Observable]
-    private List<AnotherModel> m_huhstrange;
-}
 
-public partial class AnotherModel : Model
-{
-    [Observable]
-    private string m_cOOOOOOLString;
+    private AnotherModel m_passthroughModel;
+    
+    [Passthrough("m_passthroughModel", "m_anotherString")]
+    private string m_anotherString;
+    
+    [Passthrough("m_passthroughModel", "m_anotherStringList")]
+    private List<string> m_anotherStringList;
 }
 
 namespace MyMVVM
 {
-    public partial class TestViewModel : ViewModel
+    public partial class AnotherModel : Model
     {
-        [Passthrough("m_testModel", "m_hello")]
-        private string m_hey;
+        [Observable]
+        private string m_anotherString;
 
-        [Passthrough("m_testModel", "stringsss")]
-        private List<int> moreStrings;
-        
-        private TestModel m_testModel;
+        [Observable]
+        private List<string> m_anotherStringList;
     }
 }
