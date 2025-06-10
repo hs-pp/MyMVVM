@@ -74,6 +74,7 @@ public partial class {modelGenConfig.ClassName}
 
             sourceBuilder.Append(GenerateModelInit(modelGenConfig));
             sourceBuilder.Append(GenerateModelOnChangedAction(modelGenConfig));
+            sourceBuilder.Append(GenerateSafeEqualityComparerFunction());
             sourceBuilder.Append($@"{FormatNamespaceStringEnder(modelGenConfig)}
 }}");
             
@@ -103,6 +104,7 @@ namespace {modelGenConfig.Namespace}
         HashSet<string> namespaces = new();
         namespaces.Add("MyMVVM");
         namespaces.Add("System");
+        namespaces.Add("System.Collections.Generic");
         if (modelGenConfig.RelevantAttributes.Any(x => x.IsList))
         {
             namespaces.Add("System.Collections.ObjectModel");
@@ -133,6 +135,11 @@ namespace {modelGenConfig.Namespace}
     
     public void {observable.PropName}_Set({observable.FieldType} value, bool notify = true)
     {{
+        if (SafeEquals({observable.FieldName}, value))
+        {{
+            return;
+        }}
+
         if ({observable.FieldName} != null)
         {{
             {observable.FieldName}.OnChanged -= m_onChanged;
@@ -184,6 +191,11 @@ namespace {modelGenConfig.Namespace}
     
     public void {observable.PropName}_Set({observable.FieldType} value, bool notify = true)
     {{
+        if (SafeEquals({observable.FieldName}, value))
+        {{
+            return;
+        }}
+
         {observable.FieldName} = value;
         if (notify)
         {{
@@ -228,6 +240,11 @@ namespace {modelGenConfig.Namespace}
     
     public void {observable.PropName}_Set(List<{observable.ListType}> value, bool notify = true)
     {{
+        if (SafeEquals({observable.FieldName}, value))
+        {{
+            return;
+        }}
+
         if ({observable.FieldName} == null)
         {{
             {observable.FieldName} = new();
@@ -298,6 +315,11 @@ namespace {modelGenConfig.Namespace}
     public void {observable.PropName}_Set(int index, {observable.ListType} value, bool notify = true)
     {{
         if (index < 0 || index >= {observable.FieldName}.Count)
+        {{
+            return;
+        }}
+
+        if (SafeEquals({observable.FieldName}[index], value))
         {{
             return;
         }}
@@ -401,8 +423,27 @@ namespace {modelGenConfig.Namespace}
     
     public void {observable.PropName}_Set(List<{observable.ListType}> value, bool notify = true)
     {{
-        {observable.FieldName}.Clear();
-        {observable.FieldName}.AddRange(value);
+        if (SafeEquals({observable.FieldName}, value))
+        {{
+            return;
+        }}
+
+        if (value == null)
+        {{
+            {observable.FieldName} = null;
+            {observable.PropName}_ReadOnly = null;
+        }}
+        else
+        {{
+            if ({observable.FieldName} == null)
+            {{
+                {observable.FieldName} = new();
+            }}
+
+            {observable.FieldName}.Clear();
+            {observable.FieldName}.AddRange(value);
+        }}
+
         if (notify)
         {{
             m_{observable.PropName}_OnChanged?.Invoke();
@@ -460,6 +501,11 @@ namespace {modelGenConfig.Namespace}
             return;
         }} 
 
+        if (SafeEquals({observable.FieldName}[index], value))
+        {{
+            return;
+        }}
+
         {observable.FieldName}[index] = value;
         if (notify)
         {{
@@ -501,20 +547,38 @@ namespace {modelGenConfig.Namespace}
     {
         return $@"
     // === Generated Passthrough for {passthrough.FieldName} ===
-    public {passthrough.FieldType} {passthrough.PropName} => {passthrough.ModelName}.{passthrough.ModelPropertyName};
+    public {passthrough.FieldType} {passthrough.PropName}
+    {{
+        get
+        {{
+            if ({passthrough.ModelName} == null) {{ return default; }}
+            return {passthrough.ModelName}.{passthrough.ModelPropertyName};
+        }}
+    }}
+
     public event Action<{passthrough.FieldType}> {passthrough.PropName}_OnChanged
     {{
-        add => {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnChanged += value;
-        remove => {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnChanged -= value;
+        add 
+        {{
+            if ({passthrough.ModelName} == null) {{ return; }}
+            {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnChanged += value;
+        }}
+        remove
+        {{
+            if ({passthrough.ModelName} == null) {{ return; }}
+            {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnChanged -= value;
+        }}
     }}
     
     public void {passthrough.PropName}_Set({passthrough.FieldType} value, bool notify = true)
     {{
+        if ({passthrough.ModelName} == null) {{ return; }}
         {passthrough.ModelName}.{passthrough.ModelPropertyName}_Set(value, notify);
     }}
 
     public void {passthrough.PropName}_TriggerChanged()
     {{
+        if ({passthrough.ModelName} == null) {{ return; }}
         {passthrough.ModelName}.{passthrough.ModelPropertyName}_TriggerOnChanged();
     }}
     // ====================
@@ -525,65 +589,116 @@ namespace {modelGenConfig.Namespace}
     {
         return $@"
     // === Generated Passthrough for {passthrough.FieldName} ===
-    public ReadOnlyCollection<{passthrough.ListType}> {passthrough.PropName} => {passthrough.ModelName}.{passthrough.ModelPropertyName};
+    public ReadOnlyCollection<{passthrough.ListType}> {passthrough.PropName}
+    {{
+        get
+        {{
+            if ({passthrough.ModelName} == null) {{ return default; }}
+            return {passthrough.ModelName}.{passthrough.ModelPropertyName};
+        }}
+    }}
+
     public event Action {passthrough.PropName}_OnChanged
     {{
-        add => {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnChanged += value;
-        remove => {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnChanged -= value;
+        add 
+        {{
+            if ({passthrough.ModelName} == null) {{ return; }}
+            {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnChanged += value;
+        }}
+        remove
+        {{
+            if ({passthrough.ModelName} == null) {{ return; }}
+            {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnChanged -= value;
+        }}
     }}
+
     public event Action<int, {passthrough.ListType}> {passthrough.PropName}_OnElementInserted
     {{
-        add => {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnElementInserted += value;
-        remove => {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnElementInserted -= value;
+        add 
+        {{
+            if ({passthrough.ModelName} == null) {{ return; }}
+            {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnElementInserted += value;
+        }}
+        remove
+        {{
+            if ({passthrough.ModelName} == null) {{ return; }}
+            {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnElementInserted -= value;
+        }}
     }}
+
     public event Action<int> {passthrough.PropName}_OnElementRemoved
     {{
-        add => {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnElementRemoved += value;
-        remove => {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnElementRemoved -= value;
+        add 
+        {{
+            if ({passthrough.ModelName} == null) {{ return; }}
+            {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnElementRemoved += value;
+        }}
+        remove
+        {{
+            if ({passthrough.ModelName} == null) {{ return; }}
+            {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnElementRemoved -= value;
+        }}
     }}
+
     public event Action<int> {passthrough.PropName}_OnElementChanged
     {{
-        add => {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnElementChanged += value;
-        remove => {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnElementChanged -= value;
+        add 
+        {{
+            if ({passthrough.ModelName} == null) {{ return; }}
+            {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnElementChanged += value;
+        }}
+        remove
+        {{
+            if ({passthrough.ModelName} == null) {{ return; }}
+            {passthrough.ModelName}.{passthrough.ModelPropertyName}_OnElementChanged -= value;
+        }}
     }}
         
     public void {passthrough.PropName}_Set(List<{passthrough.ListType}> value, bool notify = true)
     {{
+        if ({passthrough.ModelName} == null) {{ return; }}
         {passthrough.ModelName}.{passthrough.ModelPropertyName}_Set(value, notify);
     }}
         
     public void {passthrough.PropName}_Add({passthrough.ListType} value, bool notify = true)
     {{
+        if ({passthrough.ModelName} == null) {{ return; }}
         {passthrough.ModelName}.{passthrough.ModelPropertyName}_Add(value, notify);
     }}
         
     public void {passthrough.PropName}_Insert(int index, {passthrough.ListType} value, bool notify = true)
     {{
+        if ({passthrough.ModelName} == null) {{ return; }}
         {passthrough.ModelName}.{passthrough.ModelPropertyName}_Insert(index, value, notify);
     }}
         
     public void {passthrough.PropName}_Remove({passthrough.ListType} value, bool notify = true)
     {{
+        if ({passthrough.ModelName} == null) {{ return; }}
         {passthrough.ModelName}.{passthrough.ModelPropertyName}_Remove(value, notify);
     }}
         
     public void {passthrough.PropName}_RemoveAt(int index, bool notify = true)
     {{
+        if ({passthrough.ModelName} == null) {{ return; }}
         {passthrough.ModelName}.{passthrough.ModelPropertyName}_RemoveAt(index, notify);
     }}
         
     public void {passthrough.PropName}_Set(int index, {passthrough.ListType} value, bool notify = true)
     {{
+        if ({passthrough.ModelName} == null) {{ return; }}
         {passthrough.ModelName}.{passthrough.ModelPropertyName}_Set(index, value, notify);
     }}
         
     public void {passthrough.PropName}_Clear(bool notify = true)
     {{
+        if ({passthrough.ModelName} == null) {{ return; }}
         {passthrough.ModelName}.{passthrough.ModelPropertyName}_Clear(notify);
     }}
         
     public void {passthrough.PropName}_TriggerElementChanged(int index)
     {{
+        if ({passthrough.ModelName} == null) {{ return; }}
         {passthrough.ModelName}.{passthrough.ModelPropertyName}_TriggerElementChanged(index);
     }}
     // =================
@@ -633,14 +748,16 @@ namespace {modelGenConfig.Namespace}
         }
         
         stringBuilder.Append($@"
-    }}");   
+    }}
+");   
         
         return stringBuilder.ToString();
     }
 
     private string GenerateModelOnChangedAction(ModelGenConfig modelGenConfig)
     {
-        return $@"protected Action<BaseModel> m_onChanged;
+        return $@"
+    protected Action<BaseModel> m_onChanged;
     private Action m_onChanged_OnDelegatesChanged;
     public override event Action<BaseModel> OnChanged
     {{
@@ -654,6 +771,16 @@ namespace {modelGenConfig.Namespace}
             m_onChanged -= value;
             m_onChanged_OnDelegatesChanged?.Invoke();
         }}
+    }}
+";
+    }
+
+    private string GenerateSafeEqualityComparerFunction()
+    {
+        return $@"
+    private bool SafeEquals<T>(T a, T b)
+    {{
+        return EqualityComparer<T>.Default.Equals(a, b);
     }}";
     }
 }

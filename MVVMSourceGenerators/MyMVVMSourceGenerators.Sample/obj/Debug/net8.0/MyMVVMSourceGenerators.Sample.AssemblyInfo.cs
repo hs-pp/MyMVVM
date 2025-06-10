@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyMVVMSourceGenerators.Sample")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d305a549339c467fe65e3e92ffc224d6a8a1bc5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84f5462eb6c211a5dda78cf5b455ebcd3b76564c")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyMVVMSourceGenerators.Sample")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyMVVMSourceGenerators.Sample")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
