@@ -1,0 +1,19 @@
+{
+  "name": "com.hspp.mymvvm",
+  "displayName": "MyMVVM",
+  "version": "1.0.0",
+  "unity": "6000.0",
+  "description": "",
+  "keywords": [
+    "unity",
+    "programming"
+  ],
+  "author": {
+    "name": "hs-pp",
+    "email": "",
+    "url": ""
+  },
+  "dependencies": {
+    "com.hspp.datastores": "https://github.com/hs-pp/MyMVVM.git"
+  }
+}
