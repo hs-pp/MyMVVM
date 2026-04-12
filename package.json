@@ -14,6 +14,6 @@
     "url": ""
   },
   "dependencies": {
-    "com.hspp.datastores": "https://github.com/hs-pp/MyMVVM.git"
+    "com.hspp.mymvvm": "https://github.com/hs-pp/MyMVVM.git"
   }
 }
