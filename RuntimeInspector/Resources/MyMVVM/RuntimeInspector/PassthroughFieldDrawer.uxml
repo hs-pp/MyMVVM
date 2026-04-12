@@ -1,0 +1,15 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement style="flex-grow: 1; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px;">
+        <ui:Label text="P" name="passthrough-indicator" tooltip="Passthrough" style="background-color: rgb(176, 114, 41); border-left-color: rgb(255, 102, 0); border-right-color: rgb(255, 102, 0); border-top-color: rgb(255, 102, 0); border-bottom-color: rgb(255, 102, 0); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; font-size: 10px; -unity-font-style: bold; -unity-text-align: middle-center; width: 12px; height: 12px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; position: absolute; left: -11px; top: 5px;" />
+        <ui:VisualElement name="passthrough-null-area" style="flex-grow: 1; background-color: rgba(42, 42, 42, 0.45);">
+            <ui:VisualElement name="header" style="flex-grow: 0; flex-direction: row; height: 18px; margin-left: 19px; align-items: center; margin-bottom: 2px; margin-right: 0; margin-top: 2px;">
+                <ui:Label text="int" name="field-type-label" style="-unity-text-align: middle-left; margin-top: 3px; margin-right: 5px; margin-bottom: 3px; margin-left: 3px; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(66, 66, 255); font-size: 10px; -unity-font-style: bold; overflow: hidden;" />
+                <ui:Label text="PlayerModel&#10;" name="field-name-label" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; flex-grow: 0; -unity-text-align: middle-left;" />
+                <ui:VisualElement name="field-preview-area" style="flex-grow: 1; flex-direction: row-reverse; align-items: center; overflow: hidden;">
+                    <ui:Label text="[Passthrough NULL]" name="passthrough-null-label" style="font-size: 10px; -unity-font-style: bold; color: rgb(84, 152, 219); -unity-text-align: middle-left;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="fielddrawer-area" style="flex-grow: 1; display: none;" />
+    </ui:VisualElement>
+</ui:UXML>

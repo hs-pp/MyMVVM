@@ -1,0 +1,69 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <engine:VisualElement style="flex-grow: 1; background-color: rgba(42, 42, 42, 0.45); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px; min-height: 22px;">
+        <engine:Foldout value="true" name="main-foldout">
+            <engine:VisualElement name="foldout-body" style="flex-grow: 1; border-left-width: 2px; margin-left: 6px; padding-left: 8px; border-left-color: rgb(95, 95, 95); border-right-color: rgb(95, 95, 95); border-top-color: rgb(95, 95, 95); border-bottom-color: rgba(95, 95, 95, 0.24); border-bottom-left-radius: 14px; border-bottom-width: 2px; padding-top: 4px;">
+                <engine:ListView name="element-listview" virtualization-method="DynamicHeight" show-bound-collection-size="false" selection-type="None" style="margin-bottom: 4px; max-height: 500px; display: flex;" />
+                <engine:VisualElement name="onelementinserted-container" style="flex-grow: 1;">
+                    <engine:Foldout name="onelementinserted-foldout" value="false">
+                        <engine:VisualElement name="onelementinserted-bound-list-area" style="flex-grow: 1; margin-left: 8px;" />
+                    </engine:Foldout>
+                    <engine:VisualElement name="onelementinserted-header" style="flex-grow: 1; position: absolute; top: 0; left: 0; right: 0; height: 18px; margin-left: 18px; flex-direction: row; align-items: center;">
+                        <engine:Label text="OnElementInserted" name="onelementinserted-label" style="-unity-text-align: middle-left; margin-top: 3px; margin-right: 3px; margin-bottom: 3px; margin-left: 3px; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(180, 40, 176); font-size: 10px; -unity-font-style: bold; overflow: hidden;" />
+                        <engine:Label text="999" name="onelementinserted-count-label" style="-unity-text-align: middle-center; margin-top: 3px; margin-right: 5px; margin-bottom: 3px; margin-left: 0; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(180, 99, 40); font-size: 10px; -unity-font-style: bold;" />
+                        <engine:VisualElement name="spacer" style="flex-grow: 1;" />
+                        <engine:Label text="Insert at:" name="insert-at-label" />
+                        <engine:IntegerField value="0" name="onelementinserted-index-intfield" />
+                        <engine:Button text="Insert" name="onelementinserted-button" style="height: 16px; margin-top: 0; margin-right: 0; margin-bottom: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-style: normal; font-size: 10px; width: 46px; margin-left: 0; background-color: rgb(63, 63, 63);" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:VisualElement name="onelementremoved-container" style="flex-grow: 1;">
+                    <engine:Foldout name="onelementremoved-foldout" value="false">
+                        <engine:VisualElement name="onelementremoved-bound-list-area" style="flex-grow: 1; margin-left: 8px;" />
+                    </engine:Foldout>
+                    <engine:VisualElement name="onelementremoved-header" style="flex-grow: 1; position: absolute; top: 0; left: 0; right: 0; height: 18px; margin-left: 18px; flex-direction: row; align-items: center;">
+                        <engine:Label text="OnElementRemoved" name="onelementremoved-label" style="-unity-text-align: middle-left; margin-top: 3px; margin-right: 3px; margin-bottom: 3px; margin-left: 3px; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(180, 40, 176); font-size: 10px; -unity-font-style: bold; overflow: hidden;" />
+                        <engine:Label text="999" name="onelementremoved-count-label" style="-unity-text-align: middle-center; margin-top: 3px; margin-right: 5px; margin-bottom: 3px; margin-left: 0; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(180, 99, 40); font-size: 10px; -unity-font-style: bold;" />
+                        <engine:VisualElement name="spacer" style="flex-grow: 1;" />
+                        <engine:Label text="Remove at:" name="remove-at-label" />
+                        <engine:IntegerField value="0" name="onelementremoved-index-intfield" />
+                        <engine:Button text="Remove" name="onelementremoved-button" style="height: 16px; margin-top: 0; margin-right: 0; margin-bottom: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-style: normal; font-size: 10px; width: 46px; margin-left: 0; background-color: rgb(63, 63, 63);" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:VisualElement name="onelementchanged-container" style="flex-grow: 1; display: flex;">
+                    <engine:Foldout name="onelementchanged-foldout" value="false">
+                        <engine:VisualElement name="onelementchanged-bound-list-area" style="flex-grow: 1; margin-left: 8px;" />
+                    </engine:Foldout>
+                    <engine:VisualElement name="onelementchanged-header" style="flex-grow: 1; position: absolute; top: 0; left: 0; right: 0; height: 18px; margin-left: 18px; flex-direction: row; align-items: center;">
+                        <engine:Label text="OnElementChanged" name="onelemenchanged-label" style="-unity-text-align: middle-left; margin-top: 3px; margin-right: 3px; margin-bottom: 3px; margin-left: 3px; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(180, 40, 176); font-size: 10px; -unity-font-style: bold; overflow: hidden;" />
+                        <engine:Label text="999" name="onelementchanged-count-label" style="-unity-text-align: middle-center; margin-top: 3px; margin-right: 5px; margin-bottom: 3px; margin-left: 0; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(180, 99, 40); font-size: 10px; -unity-font-style: bold;" />
+                        <engine:VisualElement name="spacer" style="flex-grow: 1;" />
+                        <engine:Label text="Index:" name="index-label" />
+                        <engine:IntegerField value="0" name="onelementchanged-index-intfield" />
+                        <engine:Button text="Trigger" name="onelementchanged-button" style="height: 16px; margin-top: 0; margin-right: 0; margin-bottom: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-style: normal; font-size: 10px; width: 46px; margin-left: 0; background-color: rgb(63, 63, 63);" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:VisualElement name="onchanged-container" style="flex-grow: 1;">
+                    <engine:Foldout name="onchanged-foldout" value="false">
+                        <engine:VisualElement name="onchanged-bound-list-area" style="flex-grow: 1; margin-left: 8px;" />
+                    </engine:Foldout>
+                    <engine:VisualElement name="onchanged-header" style="flex-grow: 1; position: absolute; top: 0; left: 0; right: 0; height: 18px; margin-left: 18px; flex-direction: row; align-items: center;">
+                        <engine:Label text="OnChanged" name="onchanged-label" style="-unity-text-align: middle-left; margin-top: 3px; margin-right: 3px; margin-bottom: 3px; margin-left: 3px; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(180, 40, 176); font-size: 10px; -unity-font-style: bold; overflow: hidden;" />
+                        <engine:Label text="999" name="onchanged-count-label" style="-unity-text-align: middle-center; margin-top: 3px; margin-right: 5px; margin-bottom: 3px; margin-left: 0; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(180, 99, 40); font-size: 10px; -unity-font-style: bold;" />
+                        <engine:VisualElement name="spacer" style="flex-grow: 1;" />
+                        <engine:Button text="Trigger" name="onchanged-button" style="height: 16px; margin-top: 0; margin-right: 0; margin-bottom: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-style: normal; font-size: 10px; width: 46px; margin-left: 0; background-color: rgb(63, 63, 63);" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:Foldout>
+        <engine:VisualElement name="header" style="flex-grow: 1; position: absolute; top: 2px; right: 0; left: 0; bottom: auto; height: 18px; margin-left: 19px; flex-direction: row; align-items: center;">
+            <engine:Label text="List&lt;String&gt;" name="field-type-label" style="-unity-text-align: middle-left; margin-top: 3px; margin-right: 5px; margin-bottom: 3px; margin-left: 3px; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(66, 66, 255); font-size: 10px; -unity-font-style: bold; overflow: hidden;" />
+            <engine:Label text="PlayerModel&#10;" name="field-name-label" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; flex-grow: 0; -unity-text-align: middle-left;" />
+            <engine:VisualElement name="null-create-area" style="flex-grow: 1; flex-direction: row; justify-content: flex-end;">
+                <engine:Label text="[NULL]" name="null-label" style="-unity-text-align: middle-left; color: rgb(84, 152, 219); font-size: 10px; -unity-font-style: bold;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="field-preview-area" style="flex-grow: 1;">
+                <engine:Label text="99 Elements" name="element-count-label" style="font-size: 10px; -unity-font-style: italic; color: rgb(127, 127, 127);" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
